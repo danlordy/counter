@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+// import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <style jsx global>{``}</style>
+    </>
+  );
 }
 
-export default MyApp
+export default App;
