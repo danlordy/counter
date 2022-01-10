@@ -1,11 +1,11 @@
 // // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app"
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
-} from "firebase/auth";
+} from "firebase/auth"
 
 // // TODO: Add SDKs for Firebase products that you want to use
 // // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,33 +20,30 @@ const firebaseConfig = {
   messagingSenderId: "884526373104",
   appId: "1:884526373104:web:a1e7105619eb579f2c4a35",
   measurementId: "G-C90QDBHPGW",
-};
+}
 
 // Initialize Firebase
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
 
 const mapUserFromFirebaseAuth = (user) => {
   if (!user) {
-    return null;
+    return null
   }
-  const { displayName, email, photoURL, uid, emailVerified } = user;
+  const { displayName, email, photoURL, uid, emailVerified } = user
 
-  return { displayName, email, photoURL, uid, emailVerified };
-};
+  return { displayName, email, photoURL, uid, emailVerified }
+}
 
 export const onStateChanged = (onChange) => {
   return onAuthStateChanged(auth, (user) => {
-    const normalizedUser = mapUserFromFirebaseAuth(user);
-
-    onChange(normalizedUser);
-  });
-};
+    const normalizedUser = mapUserFromFirebaseAuth(user)
+    onChange(normalizedUser)
+  })
+}
 
 export const loginWithGoogle = () => {
-  const provider = new GoogleAuthProvider();
-  return signInWithPopup(auth, provider).then(({ user }) => {
-    // mapUserFromFirebaseAuth(user);
-  });
-};
+  const provider = new GoogleAuthProvider()
+  return signInWithPopup(auth, provider)
+}
