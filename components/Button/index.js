@@ -1,7 +1,6 @@
-import React from 'react'
-import { colors } from '../../styles/themes'
+import { colors } from "../../styles/themes"
 
-export default function Button ({ children, onClick }) {
+export default function Button({ children, onClick }) {
   return (
     <>
       <button onClick={onClick}>{children}</button>

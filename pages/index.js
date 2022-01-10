@@ -1,28 +1,25 @@
-import Head from "next/head";
-import AppLayout from "../components/AppLayout";
-// import Image from "next/image";
-import { colors } from "../styles/themes";
-import Google from "../components/Icons/Google";
-import Button from "../components/Button";
-import { loginWithGoogle, onStateChanged } from "../firebase/client";
-import { useEffect, useState } from "react";
+import Head from "next/head"
+import AppLayout from "../components/AppLayout"
+
+import { colors } from "../styles/themes"
+import Google from "../components/Icons/Google"
+import Button from "../components/Button"
+import { loginWithGoogle, onStateChanged } from "../firebase/client"
+import { useEffect, useState } from "react"
+import Avatar from "../components/Avatar"
 
 export default function Home() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(undefined)
 
   useEffect(() => {
-    onStateChanged(setUser);
-  }, []);
+    onStateChanged(setUser)
+  }, [])
+
   const handleClick = () => {
-    loginWithGoogle()
-      .then((user) => {
-        setUser(user);
-      })
-      .catch((error) => {
-        console.log(error);
-        // ...
-      });
-  };
+    loginWithGoogle().catch((error) => {
+      console.log(error)
+    })
+  }
 
   return (
     <>
@@ -47,7 +44,7 @@ export default function Home() {
           )}
           {user && (
             <div>
-              <img src={user.photoURL} />
+              <Avatar alt={user.displayName} src={user.photoURL} />
               <strong>{user.displayName}</strong>
             </div>
           )}
@@ -78,5 +75,5 @@ export default function Home() {
         }
       `}</style>
     </>
-  );
+  )
 }
