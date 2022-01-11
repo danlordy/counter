@@ -1,15 +1,29 @@
+import Avatar from '@/components/Avatar'
+import Button from '@/components/Button'
+import { logout } from '@/firebase/client'
+import useUser, { USER_STATE } from '@/hooks/useUser'
+
 export default function User() {
+  const user = useUser()
+
   return (
     <>
       <section>
         <div className="container_list">
           <header>
             <div className="container_avatar">
-              <div className="avatar"></div>
+              {user && (
+                <Avatar
+                  src={user.photoURL}
+                  alt={user.displayName}
+                  text={user.displayName}
+                />
+              )}
+              {user === USER_STATE.NOT_KNOW && <div className="avatar"></div>}
             </div>
             <div className="container_options">
               <span>
-                <div className="_2cNrC">
+                {/* <div className="_2cNrC">
                   <div
                     aria-disabled="false"
                     role="button"
@@ -57,9 +71,9 @@ export default function User() {
                       </svg>
                     </span>
                   </div>
-                  <span></span>
-                </div>
-                <div className="_2cNrC">
+               
+                </div> */}
+                {/* <div className="_2cNrC">
                   <div
                     aria-disabled="false"
                     role="button"
@@ -76,8 +90,9 @@ export default function User() {
                       </svg>
                     </span>
                   </div>
-                  <span></span>
-                </div>
+          
+                </div> */}
+                <Button onClick={logout}>Logout</Button>
               </span>
             </div>
           </header>
