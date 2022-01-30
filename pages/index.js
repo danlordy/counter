@@ -11,6 +11,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
+import style from '@/styles/Home.module.css'
+
 export default function Home() {
   const user = useUser()
   const router = useRouter()
@@ -35,23 +37,23 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section>
-        <header className="head"></header>
-        <div className="container">
-          <div className="content">
+      <section className={style.app}>
+        <header className={style.head}></header>
+        <div className={style.container}>
+          <div className={style.content}>
             <div>
-              <section className="sub-container">
+              <section className={style.sub_container}>
                 <img src="/cmsa.jpeg" alt="logo" />
                 <h1>
                   <span>Counter</span>
-                  <div classNameName="logotipo">
+                  <div classNameName={style.logotipo}>
                     <span>+</span>
                   </div>
                 </h1>
                 <h2>LLeva el conteo de tus ingresos diarios</h2>
                 {user === USER_STATE.NOT_LOGGED && (
                   <Button onClick={handleClick}>
-                    <Google width={24} height={24} /> Login with Google
+                    <Google width={24} height={24} /> Login
                   </Button>
                 )}
                 {user === USER_STATE.NOT_KNOW && <span>Loading...</span>}
@@ -79,73 +81,6 @@ export default function Home() {
           font-weight: 600;
           text-align: center;
           margin-bottom: 5em;
-        }
-
-        .sub-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 100%;
-        }
-
-        .sub-container h1 .logotipo {
-          transform: translateY(-15px);
-          background-color: ${colors.secondary};
-          color: ${colors.primary};
-          border-radius: 50%;
-          width: 50px;
-          height: 50px;
-          text-align: center;
-        }
-        .sub-container h1 span {
-          margin-right: 5px;
-        }
-
-        section {
-          position: relative;
-          width: 100%;
-          height: 100vh;
-        }
-
-        section .head {
-          background: #00a884;
-          width: 100%;
-          height: 127px;
-        }
-
-        section .container {
-          display: grid;
-          grid-template-columns: minmax1fr;
-          grid-template-rows: 1fr;
-          gap: 1px;
-          border-bottom: 4px solid #00a884;
-          background: #fff;
-          position: absolute;
-          width: 90%;
-          height: 95vh;
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          margin-top: 19px;
-          box-shadow: 0px 2px 31px 4px rgba(0, 0, 0, 0.54);
-        }
-
-        section div .content {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 100%;
-        }
-
-        section div .content > div {
-          max-width: 380px;
-          width: 60%;
-          height: 90%;
-          border: 1px solid #00000033;
-          box-shadow: -2px 12px 18px 9px #0000002e;
         }
       `}</style>
     </>
