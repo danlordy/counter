@@ -12,9 +12,9 @@ export default function Avatar({ alt, src, text }) {
           align-items: center;
         }
         .avatar {
-          border-radius: 9999px;
-          width: 50px;
-          height: 50px;
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
           cursor: pointer;
         }
         .avatar + strong {
